@@ -12,6 +12,7 @@ public class helloController {
 	@GetMapping 
 	public String hello() {  
 		return "Hello, Generation!"; 
+		
 	}
   
 }
