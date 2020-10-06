@@ -41,11 +41,11 @@ public class AlunoController {
 		model.setId(id);
 		repository.save(model);
 		return model;
-	}
+	} 
 	@DeleteMapping("/alunos/Servico/{id}") 
 		public String remover (@PathVariable long id) {
 			repository.deleteById(id);
 			return "sucesso";
-		}
+		} 
 
 }

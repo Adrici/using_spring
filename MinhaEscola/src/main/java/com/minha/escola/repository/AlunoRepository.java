@@ -10,4 +10,4 @@ import com.minha.escola.model.AlunoModel;
 public interface AlunoRepository extends JpaRepository<AlunoModel,Long>{
 	public List<AlunoModel> findByNome(String nome);
 
-} 
+}
