@@ -10,55 +10,65 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity
-@Table(name = "tb_categoria")
+@Table(name = "categoria")
 public class CategoriaModel {
+		
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private long id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idCategoria;
-	
-	@NotNull
-	private String nomeCategoria;
-	
-	@NotNull
-	private String descricao;
-	
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<ProdutoModel> produto;
+		@NotNull
+		@Size(min = 5, max = 100)
+		private String categoria;
 
-	public long getIdCategoria() {
-		return idCategoria;
-	}
+		@NotNull
+		@Size(min = 10, max = 500)
+		private String tipo;
 
-	public void setIdCategoria(long idCategoria) {
-		this.idCategoria = idCategoria;
-	}
+		@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+		@JsonIgnoreProperties("categoria")
+		private List<ProdutoModel> produtos;
 
-	public String getNomeCategoria() {
-		return nomeCategoria;
-	}
+		//GETTERS E SETTERS :-)
+		public long getId() {
+			return id;
+		}
 
-	public void setNomeCategoria(String nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
-	}
+		public void setId(long id) {
+			this.id = id;
+		}
 
-	public String getDescricao() {
-		return descricao;
-	} 
+		public String getCategoria() {
+			return categoria;
+		}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
- 
-	public List<ProdutoModel> getProduto() {
-		return produto;
-	}
+		public void setCategoria(String categoria) {
+			this.categoria = categoria;
+		}
 
-	public void setProduto(List<ProdutoModel> produto) {
-		this.produto = produto;
-	}
+		public String getTipo() {
+			return tipo;
+		}
+
+		public void setTipo(String tipo) {
+			this.tipo = tipo;
+		}
+
+		public List<ProdutoModel> getProdutos() {
+			return produtos;
+		}
+
+		public void setProdutos(List<ProdutoModel> produtos) {
+			this.produtos = produtos;
+		}
+		
+
+		
+		
 }

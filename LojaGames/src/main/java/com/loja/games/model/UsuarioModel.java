@@ -1,3 +1,4 @@
+  
 package com.loja.games.model;
 
 import javax.persistence.Entity;
@@ -8,51 +9,43 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "usuario")
 public class UsuarioModel {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idUsuario;
-
+	private Long id;
 	@NotNull
-	private String nomeUsuario;
-
+	private String nome;
 	@NotNull
-	private String emailUsuario;
-
+	private String email;
 	@NotNull
-	private String senhaUsuario;
-
-	public long getIdUsuario() {
-		return idUsuario;
+	private String senha;
+	
+	//GETTERS E SETTERS :-)
+	
+	public Long getId() {
+		return id;
 	}
-
-	public void setIdUsuario(long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getNome() {
+		return nome;
 	}
-
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-
-	public String getEmailUsuario() {
-		return emailUsuario;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-	public String getSenhaUsuario() {
-		return senhaUsuario;
+	public String getSenha() {
+		return senha;
 	}
-
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }

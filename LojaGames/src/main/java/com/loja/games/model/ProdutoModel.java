@@ -10,50 +10,49 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity
-@Table(name = "tb_produto")
+@Table(name = "produto")
 public class ProdutoModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idProduto;
-	
+	private Long id;
 	@NotNull
-	private String nomeProduto;
-	
+	private String nome;
+	@NotNull
+	private String marca;
 	@NotNull
 	private String descricao;
-	
-	@NotNull
-	private String desenvolvedora;
-	
-	@NotNull
-	private String plataforma;
-	
-	@NotNull
-	private double preco;
-
-	@NotNull
-	private long estoque;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private CategoriaModel categoria;
+	
+	//GETTERS E SETTERS :-)
 
-	public long getIdProduto() {
-		return idProduto;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdProduto(long idProduto) {
-		this.idProduto = idProduto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 	public String getDescricao() {
@@ -64,38 +63,6 @@ public class ProdutoModel {
 		this.descricao = descricao;
 	}
 
-	public String getDesenvolvedora() {
-		return desenvolvedora;
-	}
-
-	public void setDesenvolvedora(String desenvolvedora) {
-		this.desenvolvedora = desenvolvedora;
-	}
-
-	public String getPlataforma() {
-		return plataforma;
-	}
-
-	public void setPlataforma(String plataforma) {
-		this.plataforma = plataforma;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-
-	public long getEstoque() {
-		return estoque;
-	}
-
-	public void setEstoque(long estoque) {
-		this.estoque = estoque;
-	}
-
 	public CategoriaModel getCategoria() {
 		return categoria;
 	}
@@ -103,4 +70,5 @@ public class ProdutoModel {
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
 	}
+	
 }

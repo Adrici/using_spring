@@ -1,4 +1,3 @@
-  
 package com.loja.games.controller;
 
 import java.util.List;
@@ -20,40 +19,44 @@ import com.loja.games.model.UsuarioModel;
 import com.loja.games.repository.UsuarioRepository;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/usuario")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository repository;
 	
 	@GetMapping
-	private ResponseEntity<List<UsuarioModel>> getAll(){
+	public ResponseEntity<List<UsuarioModel>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
-	@GetMapping("/{idUsuario}")
-	private ResponseEntity<UsuarioModel> getById(@PathVariable long idUsuario){
-		return repository.findById(idUsuario).map(resp -> ResponseEntity.ok(resp))
+
+	@GetMapping("/{id}")
+	public ResponseEntity<UsuarioModel> getById(@PathVariable Long id){
+		return repository.findById(id)
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	@GetMapping("/nomeusuario/{nomeUsuario}")
-	private ResponseEntity<List<UsuarioModel>> getByNomeUsuario(@PathVariable String nomeUsuario){
-		return ResponseEntity.ok(repository.findAllByNomeUsuarioContainingIgnoreCase(nomeUsuario));
+	
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<UsuarioModel>> procurePorNome(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
-	@GetMapping("emailusuario/{emailUsuario}")
-	private ResponseEntity<List<UsuarioModel>> getByEmailUsuario(@PathVariable String emailUsuario){
-		return ResponseEntity.ok(repository.findAllByEmailUsuarioContainingIgnoreCase(emailUsuario));
-	}
+	
 	@PostMapping
-	private ResponseEntity<UsuarioModel> postUsuario(@RequestBody UsuarioModel usuario){
+	public ResponseEntity<UsuarioModel> criar(@RequestBody UsuarioModel usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
-	@PutMapping
-	private ResponseEntity<UsuarioModel> putUsuario(@RequestBody UsuarioModel usuario){
-		return ResponseEntity.ok(repository.save(usuario));
+	
+	@PutMapping("{id}")
+	public ResponseEntity<UsuarioModel> atualizar(@PathVariable Long id, @RequestBody UsuarioModel usuario){
+		usuario.setId(id);
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));
 	}
-	@DeleteMapping("{idUsuario}")
-	private void deleteUsuario(@PathVariable long idUsuario) {
-		repository.deleteById(idUsuario);
+	
+	@DeleteMapping("{id}")
+	public void deletar(@PathVariable Long id) {
+		repository.deleteById(id);
 	}
+
 }
