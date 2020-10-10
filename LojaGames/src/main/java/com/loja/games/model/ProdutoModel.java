@@ -27,7 +27,7 @@ public class ProdutoModel {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
-	private CategoriaModel categoria;
+	private CategoriaModel categoriafk;
 	
 	//GETTERS E SETTERS :-)
 
@@ -64,11 +64,11 @@ public class ProdutoModel {
 	}
 
 	public CategoriaModel getCategoria() {
-		return categoria;
+		return categoriafk;
 	}
 
 	public void setCategoria(CategoriaModel categoria) {
-		this.categoria = categoria;
+		this.categoriafk = categoria;
 	}
 	
 }

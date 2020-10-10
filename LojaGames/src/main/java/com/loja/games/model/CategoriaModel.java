@@ -28,14 +28,14 @@ public class CategoriaModel {
 		private String categoria;
 
 		@NotNull
-		@Size(min = 10, max = 500)
+		@Size(min = 5, max = 500)
 		private String tipo;
 
-		@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-		@JsonIgnoreProperties("categoria")
+		@OneToMany(mappedBy = "categoriafk", cascade = CascadeType.ALL)
+		@JsonIgnoreProperties("categoriafk")
 		private List<ProdutoModel> produtos;
 
-		//GETTERS E SETTERS :-)
+		//GETTERS E SETTERS :-) 
 		public long getId() {
 			return id;
 		}
@@ -48,7 +48,7 @@ public class CategoriaModel {
 			return categoria;
 		}
 
-		public void setCategoria(String categoria) {
+		public void setCategoria(String categoria) { 
 			this.categoria = categoria;
 		}
 
@@ -66,9 +66,6 @@ public class CategoriaModel {
 
 		public void setProdutos(List<ProdutoModel> produtos) {
 			this.produtos = produtos;
-		}
-		
-
-		
+		}		
 		
 }
