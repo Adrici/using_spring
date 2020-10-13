@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControllerGeral {
 	
 	
-	// abrir pagina login
+	// abrir pagina login //método de redirecionamento (para tema, no caso)
 	@GetMapping("/")
 	public String login() {
 		return "tema";
