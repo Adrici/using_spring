@@ -33,7 +33,7 @@ public class ControllerGeral {
 	public String form (Tema tema) { 
 		
 		repository.save(tema);
-		return "redirect:/cadastrarTema";
+		return "redirect:/cadastrarTema"; 
 	}
 
 }
